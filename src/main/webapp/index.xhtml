@@ -15,8 +15,8 @@
     		<ui:define name="content">
 		    	<h3>New Quote</h3>
 		    	<h:form>
-		    	   <h:inputText value="#{quoteController.quote}"></h:inputText>
-		    	   <h:commandButton value="Create Quote" action="#{quoteController.create()}" class="btn" />
+		    	   <h:inputText value="#{saveTypeController.type.name}"></h:inputText>
+		    	   <h:commandButton value="Create Quote" action="#{saveTypeController.save()}" class="btn" />
 		    	</h:form>
     		</ui:define>
     	</ui:composition>

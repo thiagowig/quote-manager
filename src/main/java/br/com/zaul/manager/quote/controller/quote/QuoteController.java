@@ -1,4 +1,4 @@
-package br.com.zaul.manager.quote.controller;
+package br.com.zaul.manager.quote.controller.quote;
 
 import javax.faces.bean.ManagedBean;
 
