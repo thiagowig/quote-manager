@@ -7,6 +7,8 @@ public class QuoteController {
 
 	private String quote;
 	
+	private String krai;
+	
 	public void create() {
 		System.out.println("Vai danada!!!");
 	}
