@@ -10,7 +10,6 @@ import br.com.zaul.manager.quote.business.service.contract.TypeService;
 import br.com.zaul.manager.quote.business.service.entity.Type;
 
 @ManagedBean
-@SessionScoped
 public class SaveTypeController {
 
 	private Type type;
