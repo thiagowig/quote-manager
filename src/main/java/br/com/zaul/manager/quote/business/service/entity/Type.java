@@ -1,20 +1,28 @@
 package br.com.zaul.manager.quote.business.service.entity;
 
-import org.mongodb.morphia.annotations.Entity;
-import org.mongodb.morphia.annotations.Id;
+import com.mongodb.BasicDBObject;
 
-@Entity
-public class Type {
+public class Type extends BasicDBObject {
 
-	@Id
-	private String name;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5163942329463265811L;
+
+	public String getId() {
+		return super.getString("_id");
+	}
+
+	public void setId(String id) {
+		super.append("_id", id);
+	}
 
 	public String getName() {
-		return name;
+		return super.getString("name");
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		super.append("name", name);
 	}
 	
 	

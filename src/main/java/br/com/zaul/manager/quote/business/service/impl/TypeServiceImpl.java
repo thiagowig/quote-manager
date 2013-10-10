@@ -7,13 +7,13 @@ import javax.inject.Inject;
 
 import br.com.zaul.manager.quote.business.service.contract.TypeService;
 import br.com.zaul.manager.quote.business.service.entity.Type;
-import br.com.zaul.manager.quote.business.storage.contract.Storage;
+import br.com.zaul.manager.quote.business.storage.contract.DataAccess;
 
 @Stateless
 public class TypeServiceImpl implements TypeService {
 
 	@Inject
-	private Storage<Type> storage;
+	private DataAccess<Type> storage;
 	
 	@Override
 	public List<Type> listTypes() {

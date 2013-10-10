@@ -7,11 +7,16 @@ import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
 import org.mongodb.morphia.query.Query;
 
-import br.com.zaul.manager.quote.business.storage.contract.Storage;
+import br.com.zaul.manager.quote.business.storage.contract.DataAccess;
 
 import com.mongodb.MongoClient;
 
-public class MorphiaStorage<T> implements Storage<T> {
+public class MorphiaDAO<T> { 
+	
+	/*implements DataAccess<T> {
+	
+	
+}
 
 	private Datastore datastore;
 	
@@ -21,7 +26,7 @@ public class MorphiaStorage<T> implements Storage<T> {
 	
 	private static final Integer MONGO_PORT = Integer.valueOf(System.getenv("OPENSHIFT_MONGODB_DB_PORT"));
 	
-	public MorphiaStorage() {
+	public MorphiaDAO() {
 		try {
 			this.morphia = new Morphia();
 			this.datastore = morphia.createDatastore(new MongoClient(MONGO_HOST, MONGO_PORT), "db");
@@ -43,5 +48,5 @@ public class MorphiaStorage<T> implements Storage<T> {
 		
 		return find.asList();
 	}
-
+*/
 }
