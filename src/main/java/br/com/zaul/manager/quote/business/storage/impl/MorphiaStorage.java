@@ -15,15 +15,13 @@ public class MorphiaStorage<T> implements Storage<T> {
 
 	private Datastore datastore;
 	
-	private static final String URL_PATTERN = "mongodb://%s:%s/";
-	
 	private static final String MONGO_HOST = System.getenv("OPENSHIFT_MONGODB_DB_HOST");
 	
-	private static final String MONGO_PORT = System.getenv("OPENSHIFT_MONGODB_DB_PORT");
+	private static final Integer MONGO_PORT = Integer.valueOf(System.getenv("OPENSHIFT_MONGODB_DB_PORT"));
 	
 	public MorphiaStorage() {
 		try {
-			this.datastore = new Morphia().createDatastore(new MongoClient(String.format(URL_PATTERN, MONGO_HOST, MONGO_PORT)), "db");
+			this.datastore = new Morphia().createDatastore(new MongoClient(MONGO_HOST, MONGO_PORT), "db");
 			
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
