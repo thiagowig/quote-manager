@@ -22,6 +22,10 @@ public class SaveTypeController {
 	}
 
 	public Type getType() {
+		if (type == null) {
+			type = new Type();
+		}
+		
 		return type;
 	}
 
