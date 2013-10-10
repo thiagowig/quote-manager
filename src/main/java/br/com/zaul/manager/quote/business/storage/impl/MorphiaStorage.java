@@ -15,13 +15,16 @@ public class MorphiaStorage<T> implements Storage<T> {
 
 	private Datastore datastore;
 	
+	private Morphia morphia;
+	
 	private static final String MONGO_HOST = System.getenv("OPENSHIFT_MONGODB_DB_HOST");
 	
 	private static final Integer MONGO_PORT = Integer.valueOf(System.getenv("OPENSHIFT_MONGODB_DB_PORT"));
 	
 	public MorphiaStorage() {
 		try {
-			this.datastore = new Morphia().createDatastore(new MongoClient(MONGO_HOST, MONGO_PORT), "db");
+			this.morphia = new Morphia();
+			this.datastore = morphia.createDatastore(new MongoClient(MONGO_HOST, MONGO_PORT), "db");
 			
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
@@ -30,6 +33,7 @@ public class MorphiaStorage<T> implements Storage<T> {
 	
 	@Override
 	public void save(T type) {
+		this.morphia.map(type.getClass());
 		this.datastore.save(type);
 	}
 
