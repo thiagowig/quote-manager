@@ -26,7 +26,7 @@ public class DataAccessFactory {
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		}
-		this.db = this.mongoClient.getDB("db");
+		this.db = this.mongoClient.getDB("quotemanager");
 		
 		return this.db;
 	}
