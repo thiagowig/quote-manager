@@ -34,9 +34,9 @@
           <a class="brand" href="/pages/index.jsp">Quote Manager</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><h:link value="Home" outcome="home" /></li>
-              <li><h:link value="Type" outcome="type" /></li>
-              <li><a href="http://getbootstrap.com/2.3.2/examples/starter-template.html#contact">Quotes</a></li>
+              <li class="#{pageName == 'home' ? 'active' : '' }"><h:link value="Home" outcome="home" /></li>
+              <li><h:link value="#{pageName == 'type' ? 'active' : '' }" outcome="type" /></li>
+              <li><h:link value="#{pageName == 'quote' ? 'active' : '' }" outcome="quote" /></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
