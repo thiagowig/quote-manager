@@ -15,7 +15,7 @@ public class MorphiaStorage<T> implements Storage<T> {
 
 	private Datastore datastore;
 	
-	private static final String URL_PATTERN = "mongodb://$%s:$%s/";
+	private static final String URL_PATTERN = "mongodb://%s:%s/";
 	
 	private static final String MONGO_HOST = System.getenv("OPENSHIFT_MONGODB_DB_HOST");
 	
