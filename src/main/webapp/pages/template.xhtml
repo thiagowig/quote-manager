@@ -35,8 +35,8 @@
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="#{pageName == 'home' ? 'active' : '' }"><h:link value="Home" outcome="home" /></li>
-              <li><h:link value="#{pageName == 'type' ? 'active' : '' }" outcome="type" /></li>
-              <li><h:link value="#{pageName == 'quote' ? 'active' : '' }" outcome="quote" /></li>
+              <li class="#{pageName == 'type' ? 'active' : '' }"><h:link value="Type" outcome="type" /></li>
+              <li class="#{pageName == 'quote' ? 'active' : '' }"><h:link value="Quote" outcome="quote" /></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
