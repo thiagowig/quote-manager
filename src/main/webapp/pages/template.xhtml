@@ -34,9 +34,9 @@
           <a class="brand" href="/pages/index.jsp">Quote Manager</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="#{pageName == 'home' ? 'active' : '' }"><h:link value="Home" outcome="home" /></li>
-              <li class="#{pageName == 'type' ? 'active' : '' }"><h:link value="Type" outcome="type" /></li>
-              <li class="#{pageName == 'quote' ? 'active' : '' }"><h:link value="Quote" outcome="quote" /></li>
+              <li class="#{pageName eq 'home' ? 'active' : '' }"><h:link value="Home" outcome="home" /></li>
+              <li class="#{pageName eq 'type' ? 'active' : '' }"><h:link value="Type" outcome="type" /></li>
+              <li class="#{pageName eq 'quote' ? 'active' : '' }"><h:link value="Quote" outcome="quote" /></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
