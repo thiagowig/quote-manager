@@ -9,7 +9,7 @@ import javax.enterprise.inject.Produces;
 
 public class PropertiesFactory {
 
-	private static final String PROPERTIES_FILE_NAME = "";
+	private static final String PROPERTIES_FILE_NAME = "application.properties";
 	
 	@Produces
 	public Properties producePropertiesFile() {
