@@ -19,7 +19,16 @@
 		    	<h3>New Quote</h3>
 		    	<h:form>
 		    	   <h:messages />
-		    	   <h:commandButton value="Create Quote" action="#{saveTypeController.save()}" class="btn" />
+		    	   
+					<h:dataTable value="#{listTypesController.list()}" var="item">
+						<h:column>
+							<h:outputText value="#{item.id}" />
+						</h:column>
+						<h:column>
+							<h:outputText value="#{item.name}" />
+						</h:column>
+					</h:dataTable>
+					
 		    	</h:form>
     		</ui:define>
     	</ui:composition>

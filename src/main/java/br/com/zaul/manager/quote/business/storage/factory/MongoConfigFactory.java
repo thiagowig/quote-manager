@@ -4,11 +4,9 @@ import java.net.UnknownHostException;
 import java.util.Properties;
 
 import javax.enterprise.inject.Produces;
-import javax.enterprise.inject.spi.InjectionPoint;
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import br.com.zaul.manager.quote.exception.DatabaseException;
 
@@ -20,10 +18,11 @@ public class MongoConfigFactory {
 	@Inject
 	private Properties propertiesConfig;
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger(MongoConfigFactory.class);
+	@Inject
+	private static Logger LOGGER;
 
 	@Produces
-	public DB produceDB(InjectionPoint injectionPoint) {	
+	public DB produceDB() {	
 		try {
 			String mongoHost = System.getenv(propertiesConfig.getProperty("database.mongo.host"));
 			int mongoPort = Integer.parseInt(System.getenv(propertiesConfig.getProperty("database.mongo.port")));

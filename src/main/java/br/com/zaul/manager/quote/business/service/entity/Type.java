@@ -1,29 +1,46 @@
 package br.com.zaul.manager.quote.business.service.entity;
 
 import com.mongodb.BasicDBObject;
+import com.mongodb.DBObject;
 
-public class Type extends BasicDBObject {
+public class Type implements MongoObject {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -5163942329463265811L;
-
+	private DBObject dbObject;
+	
+	public static final String COLLECTION_NAME = "quoteType";
+	
+	public Type() {
+		this.dbObject = new BasicDBObject();
+	}
+	
 	public String getId() {
-		return super.getString("_id");
+		return (String) this.dbObject.get("_id");
 	}
 
 	public void setId(String id) {
-		super.append("_id", id);
+		this.getDbObject().put("_id", id);
 	}
 
 	public String getName() {
-		return super.getString("name");
+		return (String) this.dbObject.get("name");
 	}
 
 	public void setName(String name) {
-		super.append("name", name);
+		this.getDbObject().put("name", name);
 	}
-	
-	
+
+	@Override
+	public DBObject getDbObject() {
+		return this.dbObject;
+	}
+
+	@Override
+	public String getCollectionName() {
+		return Type.COLLECTION_NAME;
+	}
+
+	@Override
+	public void setDbObject(DBObject dBObject) {
+		this.dbObject = new BasicDBObject();
+	}
 }

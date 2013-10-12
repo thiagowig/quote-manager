@@ -5,15 +5,16 @@ import java.io.InputStream;
 import java.util.Properties;
 
 import javax.enterprise.inject.Produces;
+import javax.inject.Inject;
 
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import br.com.zaul.manager.quote.exception.GenericApplicationException;
 
 public class PropertiesFactory {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(PropertiesFactory.class);
+	@Inject
+	private static Logger LOGGER;
 	
 	@Produces
 	public Properties producePropertiesFile() {

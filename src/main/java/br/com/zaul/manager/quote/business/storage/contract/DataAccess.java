@@ -2,9 +2,11 @@ package br.com.zaul.manager.quote.business.storage.contract;
 
 import java.util.List;
 
-public interface DataAccess<T> {
+import br.com.zaul.manager.quote.business.service.entity.MongoObject;
 
-	void save(T type);
+public interface DataAccess<T extends MongoObject> {
+
+	void save(MongoObject mongoObject);
 	
-	List<T> listAll();
+	List<T> listAll(Class<T> classFromObject, String collectionName);
 }

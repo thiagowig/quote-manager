@@ -13,16 +13,16 @@ import br.com.zaul.manager.quote.business.storage.contract.DataAccess;
 public class TypeServiceImpl implements TypeService {
 
 	@Inject
-	private DataAccess<Type> storage;
+	private DataAccess<Type> dataAccess;
 	
 	@Override
 	public List<Type> listTypes() {
-		return this.storage.listAll();
+		return this.dataAccess.listAll(Type.class, Type.COLLECTION_NAME);
 	}
 
 	@Override
 	public void save(Type type) {
-		this.storage.save(type);
+		this.dataAccess.save(type);
 	}
 
 	

@@ -5,9 +5,9 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
+import javax.inject.Inject;
 
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import br.com.zaul.manager.quote.business.service.contract.TypeService;
 import br.com.zaul.manager.quote.business.service.entity.Type;
@@ -22,8 +22,6 @@ public class SaveTypeController {
 	@EJB
 	private TypeService service;
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger(SaveTypeController.class);
-	
 	public void save(AjaxBehaviorEvent event) {
 		try {
 			this.doSave();
@@ -35,7 +33,6 @@ public class SaveTypeController {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro genérico", null));
 			
 		} catch (Exception e) {
-			LOGGER.error("Erro ao salvar o tipo", e);
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro assustador", null));
 		}
 	}
