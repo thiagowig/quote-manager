@@ -22,16 +22,22 @@
 		    	   
 					<h:dataTable value="#{listTypesController.list()}" var="item">
 						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Id" />							
+							</f:facet>
 							<h:outputText value="#{item.id}" />
 						</h:column>
 						<h:column>
+							<f:facet name="Name">
+								<h:outputText value="Id" />							
+							</f:facet>
 							<h:outputText value="#{item.name}" />
 						</h:column>
 					</h:dataTable>
 					
 		    	</h:form>
     		</ui:define>
-    	</ui:composition>
+	    	</ui:composition>
     
     </h:body>
 </html>
