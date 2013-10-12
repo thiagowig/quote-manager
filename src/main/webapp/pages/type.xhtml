@@ -23,7 +23,7 @@
 				<h:panelGrid columns="2">
 					<h:outputText value="Type Name" />
 					<h:inputText value="#{saveTypeController.type.name}" styleClass="form-control" />
-					<h:commandButton value="Create Type" action="#{saveTypeController.save()}" class="btn">
+					<h:commandButton value="Create Type" class="btn">
 						<f:ajax listener="#{saveTypeController.save()}" render="messages" />
 					</h:commandButton>
 				</h:panelGrid>
