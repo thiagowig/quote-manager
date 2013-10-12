@@ -1,0 +1,11 @@
+#message-info {
+	color:green;
+}
+
+#message-warn {
+	color:yellow;
+}
+
+#message-error {
+	color:red;
+}
