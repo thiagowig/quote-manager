@@ -28,20 +28,20 @@ public class SaveTypeController {
 			this.doSave();
 			
 		} catch (DatabaseException e) {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Erro no banco de dados"));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro no banco de dados", null));
 			
 		} catch (GenericApplicationException e) {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Erro genérico"));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro genérico", null));
 			
 		} catch (Exception e) {
 			LOGGER.error("Erro ao salvar o tipo", e);
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Erro assustador"));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro assustador", null));
 		}
 	}
 	
 	private void doSave() {
 		this.service.save(this.type);
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Tipo inserido com sucesso"));
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Tipo inserido com sucesso", null));
 	}
 
 	public Type getType() {
