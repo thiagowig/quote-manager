@@ -7,6 +7,9 @@ import javax.enterprise.inject.Produces;
 import javax.enterprise.inject.spi.InjectionPoint;
 import javax.inject.Inject;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import br.com.zaul.manager.quote.exception.DatabaseException;
 
 import com.mongodb.DB;
@@ -16,6 +19,8 @@ public class MongoConfigFactory {
 	
 	@Inject
 	private Properties propertiesConfig;
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(MongoConfigFactory.class);
 
 	@Produces
 	public DB produceDB(InjectionPoint injectionPoint) {	
@@ -32,8 +37,8 @@ public class MongoConfigFactory {
 			return db;
 			
 		} catch (UnknownHostException e) {
-			e.printStackTrace();
-			throw new DatabaseException("Erro ao conectar no banco");
+			LOGGER.error("Erro ao iniciar o banco de dados", e);
+			throw new DatabaseException();
 		}
 		
 	}

@@ -6,10 +6,15 @@ import java.util.Properties;
 
 import javax.enterprise.inject.Produces;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import br.com.zaul.manager.quote.exception.GenericApplicationException;
 
 public class PropertiesFactory {
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(PropertiesFactory.class);
+	
 	@Produces
 	public Properties producePropertiesFile() {
 		//TODO: Change the version of Java to support try-with-resources and multi catch statement
@@ -22,7 +27,7 @@ public class PropertiesFactory {
 			return propertiesFile;
 			
 		} catch (IOException e) {
-			e.printStackTrace();
+			LOGGER.error("Erro ao recuperar arquivo de propriedades", e);
 			throw new GenericApplicationException("Ocorreu um erro na aplicação.");
 			
 		} finally {
