@@ -22,8 +22,8 @@ public class MongoConfigFactory {
 	@Produces
 	public DB produceDB(InjectionPoint injectionPoint) {	
 		try {
-			String mongoHost = System.getenv(propertiesConfig.getProperty("database.mongo.host"));
-			int mongoPort = Integer.parseInt(System.getenv(propertiesConfig.getProperty("database.mongo.port")));
+			String mongoHost = System.getenv("OPENSHIFT_MONGODB_DB_HOST");
+			int mongoPort = Integer.parseInt(System.getenv("OPENSHIFT_MONGODB_DB_PORT"));
 			String databaseName = propertiesConfig.getProperty("database.mongo.name");
 			String user = propertiesConfig.getProperty("database.mongo.user");
 			char[] pass = propertiesConfig.getProperty("database.mongo.pass").toCharArray();
