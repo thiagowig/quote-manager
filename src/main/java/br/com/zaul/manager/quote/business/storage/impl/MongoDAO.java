@@ -33,7 +33,7 @@ public class MongoDAO<T extends MongoObject> implements DataAccess<T> {
 		DBCursor cursor = this.db.getCollection(collectionName).find();
 		
 		try {
-			List<T> list = new ArrayList<>();
+			List<T> list = new ArrayList<T>();
 			
 			while(cursor.hasNext()) {
 				T object = classFromObject.newInstance();
