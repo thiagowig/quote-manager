@@ -18,8 +18,9 @@ public class PropertiesFactory {
 		try {
 			propertiesFile = new Properties();
 			FileInputStream fileInputStream = new FileInputStream(PROPERTIES_FILE_NAME);
-			
 			propertiesFile.load(fileInputStream);
+			fileInputStream.close();
+			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
