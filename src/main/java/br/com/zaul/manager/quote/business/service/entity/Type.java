@@ -1,9 +1,16 @@
 package br.com.zaul.manager.quote.business.service.entity;
 
+import java.io.Serializable;
+
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
 
-public class Type implements MongoObject {
+public class Type implements MongoObject, Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private DBObject dbObject;
 	
