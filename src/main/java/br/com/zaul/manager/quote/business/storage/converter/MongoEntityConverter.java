@@ -2,7 +2,6 @@ package br.com.zaul.manager.quote.business.storage.converter;
 
 import java.lang.reflect.Method;
 
-import br.com.zaul.manager.quote.business.storage.annotation.Persistent;
 import br.com.zaul.manager.quote.exception.DatabaseException;
 
 import com.mongodb.DBObject;
@@ -23,11 +22,11 @@ public class MongoEntityConverter<T> {
 			Method[] declaredMethods = entityClass.getDeclaredMethods();
 			
 			for (Method method : declaredMethods) {
-				Persistent persistent = method.getAnnotation(Persistent.class);
+				//Persistent persistent = method.getAnnotation(Persistent.class);
 				
-				if (persistent != null) {
-					method.invoke(newType, dbObject.get(persistent.name()));
-				}
+				//if (persistent != null) {
+				//	method.invoke(newType, dbObject.get(persistent.name()));
+				//}
 			}
 			
 			return newType;
