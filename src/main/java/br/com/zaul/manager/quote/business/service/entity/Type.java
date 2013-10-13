@@ -14,7 +14,7 @@ public class Type implements MongoObject, Serializable {
 
 	private DBObject dbObject;
 	
-	public static final String COLLECTION_NAME = "quoteType";
+	public static final String COLLECTION_NAME = "type";
 	
 	public Type() {
 		this.dbObject = new BasicDBObject();
