@@ -18,6 +18,7 @@ public class PropertiesFactory {
 	
 	@Produces
 	public Properties producePropertiesFile() {
+		
 		try (InputStream inputStream =  getClass().getResourceAsStream("/application.properties")) {
 			Properties propertiesFile = new Properties();
 			propertiesFile.load(inputStream);
