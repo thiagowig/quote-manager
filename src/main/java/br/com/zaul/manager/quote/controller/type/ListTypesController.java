@@ -21,7 +21,7 @@ public class ListTypesController {
 	}
 
 	public List<Type> getTypes() {
-		return types;
+		return typeService.listTypes();
 	}
 
 	public void setTypes(List<Type> types) {

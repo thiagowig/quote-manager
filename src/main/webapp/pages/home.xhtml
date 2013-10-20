@@ -20,16 +20,10 @@
 		    	<h:form>
 		    	   <h:messages />
 		    	   
-					<h:dataTable value="#{listTypesController.list()}" var="item">
+					<h:dataTable value="#{listTypesController.types}" var="item">
 						<h:column>
 							<f:facet name="header">
-								<h:outputText value="Id" />							
-							</f:facet>
-							<h:outputText value="#{item.id}" />
-						</h:column>
-						<h:column>
-							<f:facet name="Name">
-								<h:outputText value="Id" />							
+								<h:outputText value="Name" />							
 							</f:facet>
 							<h:outputText value="#{item.name}" />
 						</h:column>

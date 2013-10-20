@@ -24,8 +24,10 @@ public class MongoConfigFactory {
 	@Produces
 	public DB produceDB() {	
 		try {
-			String mongoHost = System.getenv(propertiesConfig.getProperty("database.mongo.host"));
-			int mongoPort = Integer.parseInt(System.getenv(propertiesConfig.getProperty("database.mongo.port")));
+			//String mongoHost = System.getenv(propertiesConfig.getProperty("database.mongo.host"));
+			//int mongoPort = Integer.parseInt(System.getenv(propertiesConfig.getProperty("database.mongo.port")));
+			String mongoHost = propertiesConfig.getProperty("database.mongo.host");
+			int mongoPort = Integer.parseInt(propertiesConfig.getProperty("database.mongo.port"));
 			String databaseName = propertiesConfig.getProperty("database.mongo.name");
 			String user = propertiesConfig.getProperty("database.mongo.user");
 			char[] pass = propertiesConfig.getProperty("database.mongo.pass").toCharArray();

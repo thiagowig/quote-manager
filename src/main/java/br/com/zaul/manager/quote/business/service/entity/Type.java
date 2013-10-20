@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
+import com.sun.corba.se.impl.ior.ObjectIdImpl;
+import com.sun.corba.se.spi.ior.ObjectId;
 
 public class Type implements MongoObject, Serializable {
 
@@ -21,11 +23,7 @@ public class Type implements MongoObject, Serializable {
 	}
 	
 	public String getId() {
-		return (String) this.dbObject.get("_id");
-	}
-
-	public void setId(String id) {
-		this.getDbObject().put("_id", id);
+		return ((ObjectId) this.dbObject.get("_id")).toString();
 	}
 
 	public String getName() {
@@ -47,7 +45,7 @@ public class Type implements MongoObject, Serializable {
 	}
 
 	@Override
-	public void setDbObject(DBObject dBObject) {
-		this.dbObject = new BasicDBObject();
+	public void setDbObject(DBObject dbObject) {
+		this.dbObject = dbObject;
 	}
 }
