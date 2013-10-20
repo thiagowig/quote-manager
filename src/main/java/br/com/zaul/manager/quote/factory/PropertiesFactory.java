@@ -18,11 +18,7 @@ public class PropertiesFactory {
 	
 	@Produces
 	public Properties producePropertiesFile() {
-		//TODO: Change the version of Java to support try-with-resources and multi catch statement
-		InputStream inputStream = null;
-		
-		try  {
-			inputStream = getClass().getResourceAsStream("/application.properties");
+		try (InputStream inputStream =  getClass().getResourceAsStream("/application.properties")) {
 			Properties propertiesFile = new Properties();
 			propertiesFile.load(inputStream);
 			return propertiesFile;
@@ -30,13 +26,6 @@ public class PropertiesFactory {
 		} catch (IOException e) {
 			LOGGER.error("Erro ao recuperar arquivo de propriedades", e);
 			throw new GenericApplicationException("Ocorreu um erro na aplicação.");
-			
-		} finally {
-			try {
-				inputStream.close();
-			} catch (IOException e) {
-			}
 		}
-		
 	}
 }
