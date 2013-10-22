@@ -12,16 +12,12 @@
 	    <meta charset="utf-8" />
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
-		<!-- h:outputStylesheet name="/css/bootstrap.css" library="css" />
-	
-	    <h:outputStylesheet name="/css/bootstrap-responsive.css" library="css" /> -->
+		<h:outputStylesheet name="bootstrap.css" library="css" />
+	    <h:outputStylesheet name="bootstrap-responsive.css" library="css" />
 
-		<link href="/css/bootstrap.css" rel="stylesheet" />
-		<link href="/css/bootstrap-responsive.css" rel="stylesheet" />	    
-	
   </h:head>
 
-  <body>
+  <h:body>
 
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
@@ -31,7 +27,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="/pages/index.jsp">Quote Manager</a>
+          <h:link value="Quote Manager" outcome="home" styleClass="brand" />
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="#{pageName eq 'home' ? 'active' : '' }"><h:link value="Home" outcome="home" /></li>
@@ -44,28 +40,24 @@
     </div>
 
     <div class="container">
-    	
 	    <ui:insert name="content" />	
-
     </div> <!-- /container -->
 
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="/js/jquery.js"></script>
-    <script src="/js/bootstrap-transition.js"></script>
-    <script src="/js/bootstrap-alert.js"></script>
-    <script src="/js/bootstrap-modal.js"></script>
-    <script src="/js/bootstrap-dropdown.js"></script>
-    <script src="/js/bootstrap-scrollspy.js"></script>
-    <script src="/js/bootstrap-tab.js"></script>
-    <script src="/js/bootstrap-tooltip.js"></script>
-    <script src="/js/bootstrap-popover.js"></script>
-    <script src="/js/bootstrap-button.js"></script>
-    <script src="/js/bootstrap-collapse.js"></script>
-    <script src="/js/bootstrap-carousel.js"></script>
-    <script src="/js/bootstrap-typeahead.js"></script>
+    <h:outputScript library="js" name="jquery.js" />
+    <h:outputScript library="js" name="bootstrap-transition.js" />
+    <h:outputScript library="js" name="bootstrap-alert.js" />
+    <h:outputScript library="js" name="bootstrap-modal.js" />
+    <h:outputScript library="js" name="bootstrap-dropdown.js" />
+    <h:outputScript library="js" name="bootstrap-scrollspy.js" />
+    <h:outputScript library="js" name="bootstrap-tab.js" />
+    <h:outputScript library="js" name="bootstrap-tooltip.js" />
+    <h:outputScript library="js" name="bootstrap-popover.js" />
+    <h:outputScript library="js" name="bootstrap-button.js" />
+    <h:outputScript library="js" name="bootstrap-collapse.js" />
+    <h:outputScript library="js" name="bootstrap-carousel.js" />
+    <h:outputScript library="js" name="bootstrap-typeahead.js" />
 
-  
-
-</body></html>
+</h:body></html>

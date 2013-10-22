@@ -10,17 +10,23 @@
         <title>Quote Manager</title>
     </h:head>
     
-    <ui:param name="pageName" value="home" />
-    
     <h:body>
     
     	<ui:composition template="/pages/template.xhtml">
+		    <ui:param name="pageName" value="home" />
     		<ui:define name="content">
-		    	<h3>New Quote</h3>
+		    	<h1>New Quote</h1>
 		    	<h:form>
 		    	   <h:messages />
 		    	   
-					<h:dataTable value="#{listTypesController.types}" var="item">
+					<h:dataTable styleClass="table table-striped" value="#{listTypesController.types}" var="item">
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Id" />							
+							</f:facet>
+							<h:outputText value="#{item.id}" />
+						</h:column>
+						
 						<h:column>
 							<f:facet name="header">
 								<h:outputText value="Name" />							

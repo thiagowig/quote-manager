@@ -10,22 +10,25 @@
 	<title>Quote Manager</title>
 </h:head>
 
-<ui:param name="pageName" value="type" />
 
 <h:body>
 
 	<ui:composition template="template.xhtml">
+		<ui:param name="pageName" value="type" />
 		<ui:define name="content">
 			<h:form>
 				<h3>New Quote</h3>
-				<h:messages id="messages" infoClass="message-info" warnClass="message-warn" errorClass="message-error" />
+				<h:messages id="messages" infoClass="alert alert-success" warnClass="alert" errorClass="alert alert-error" />
 
 				<h:panelGrid columns="2">
 					<h:outputText value="Type Name:" />
+					
 					<h:inputText value="#{saveTypeController.type.name}" styleClass="form-control" />
-					<h:commandButton value="Create Type" class="btn">
+					
+					<h:commandButton value="Create Type" class="btn btn-primary">
 						<f:ajax event="click" listener="#{saveTypeController.save}" render="messages" execute="@form" />
 					</h:commandButton>
+					
 				</h:panelGrid>
 			</h:form>
 		</ui:define>

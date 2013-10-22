@@ -5,9 +5,6 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
-import javax.inject.Inject;
-
-import org.slf4j.Logger;
 
 import br.com.zaul.manager.quote.business.service.contract.TypeService;
 import br.com.zaul.manager.quote.business.service.entity.Type;
