@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
-import com.sun.corba.se.spi.ior.ObjectId;
 
 public class Type implements MongoObject, Serializable {
 

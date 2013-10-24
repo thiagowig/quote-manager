@@ -2,27 +2,41 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:f="http://java.sun.com/jsf/core"      
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
- 
-    <h:head>
-        <title>Quote Manager</title>
-    </h:head>
-    
-    
-    <h:body>
-    
-    	<ui:composition template="template.xhtml">
-		    <ui:param name="pageName" value="quote" />
-    		<ui:define name="content">
-		    	<h3>New Quote</h3>
-		    	<h:form>
-		    	   <h:messages />
-		    	   <h:commandButton value="Create Quote" action="#{saveTypeController.save()}" class="btn" />
-		    	</h:form>
-    		</ui:define>
-    	</ui:composition>
-    
-    </h:body>
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<title>Quote Manager</title>
+</h:head>
+
+
+<h:body>
+
+	<ui:composition template="template.xhtml">
+		<ui:param name="pageName" value="quote" />
+		<ui:define name="content">
+			<h:form>
+				<h3>New Quote</h3>
+				<h:messages id="messages" infoClass="alert alert-success" warnClass="alert" errorClass="alert alert-error" />
+
+				<h:panelGrid columns="2">
+					<h:outputText value="Type:" />
+					<h:selectOneMenu value="#{saveQuoteController.quote.type}">
+						<f:selectItems value="#{saveQuoteController.types}" var="item" itemLabel="#{item.name}" />
+					</h:selectOneMenu>
+				
+					<h:outputText value="Quote:" />
+					<h:inputText value="#{saveQuoteController.quote.description}" styleClass="form-control" />
+					
+					<h:commandButton value="Create Quote" class="btn btn-primary">
+						<f:ajax event="click" listener="#{saveQuoteController.save}" render="messages" execute="@form" />
+					</h:commandButton>
+					
+				</h:panelGrid>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+
+</h:body>
 </html>

@@ -15,9 +15,8 @@
     	<ui:composition template="/pages/template.xhtml">
 		    <ui:param name="pageName" value="home" />
     		<ui:define name="content">
-		    	<h1>New Quote</h1>
 		    	<h:form>
-		    	   <h:messages />
+			    	<h1>Types</h1>
 		    	   
 					<h:dataTable styleClass="table table-striped" value="#{listTypesController.types}" var="item">
 						<h:column>
@@ -32,6 +31,24 @@
 								<h:outputText value="Name" />							
 							</f:facet>
 							<h:outputText value="#{item.name}" />
+						</h:column>
+					</h:dataTable>
+					
+					<h1>Quotes</h1>
+		    	   
+					<h:dataTable styleClass="table table-striped" value="#{listQuotesController.quotes}" var="item">
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Id" />							
+							</f:facet>
+							<h:outputText value="#{item.id}" />
+						</h:column>
+						
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Description" />							
+							</f:facet>
+							<h:outputText value="#{item.description}" />
 						</h:column>
 					</h:dataTable>
 					
