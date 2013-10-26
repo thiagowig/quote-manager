@@ -13,16 +13,21 @@ import br.com.zaul.manager.quote.business.storage.contract.DataAccess;
 public class QuoteServiceImpl implements QuoteService {
 
 	@Inject
-	private DataAccess<Quote> dataAccess;
+	private DataAccess dataAccess;
 	
 	@Override
 	public List<Quote> listAll() {
-		return this.dataAccess.listAll(Quote.class, Quote.COLLECTION_NAME);
+		return this.dataAccess.find(Quote.class);
 	}
 
 	@Override
 	public void save(Quote quote) {
 		this.dataAccess.save(quote);
+	}
+
+	@Override
+	public void delete(Quote quote) {
+		dataAccess.delete(quote);
 	}
 
 	

@@ -8,6 +8,4 @@ public interface MongoObject {
 	
 	void setDbObject(DBObject dBObject);
 	
-	String getCollectionName();
-	
 }

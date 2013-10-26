@@ -13,16 +13,21 @@ import br.com.zaul.manager.quote.business.storage.contract.DataAccess;
 public class TypeServiceImpl implements TypeService {
 
 	@Inject
-	private DataAccess<Type> dataAccess;
+	private DataAccess dataAccess;
 	
 	@Override
 	public List<Type> listTypes() {
-		return this.dataAccess.listAll(Type.class, Type.COLLECTION_NAME);
+		return this.dataAccess.find(Type.class);
 	}
 
 	@Override
 	public void save(Type type) {
 		this.dataAccess.save(type);
+	}
+
+	@Override
+	public Type findByName(String name) {
+		return dataAccess.findOneBy(Type.class, "name", name);
 	}
 
 	

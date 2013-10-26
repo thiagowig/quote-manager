@@ -14,8 +14,6 @@ public class Type implements MongoObject, Serializable {
 
 	private DBObject dbObject;
 	
-	public static final String COLLECTION_NAME = "type";
-	
 	public Type() {
 		this.dbObject = new BasicDBObject();
 	}
@@ -38,12 +36,35 @@ public class Type implements MongoObject, Serializable {
 	}
 
 	@Override
-	public String getCollectionName() {
-		return Type.COLLECTION_NAME;
-	}
-
-	@Override
 	public void setDbObject(DBObject dbObject) {
 		this.dbObject = dbObject;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((this.getId() == null) ? 0 : this.getId().hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Type other = (Type) obj;
+		if (this.getId() == null) {
+			if (other.getId() != null)
+				return false;
+		} else if (!getId().equals(other.getId()))
+			return false;
+		return true;
+	}
+	
+	
 }

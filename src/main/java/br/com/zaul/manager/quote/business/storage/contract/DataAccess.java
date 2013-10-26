@@ -4,9 +4,13 @@ import java.util.List;
 
 import br.com.zaul.manager.quote.business.service.entity.MongoObject;
 
-public interface DataAccess<T extends MongoObject> {
+public interface DataAccess {
 
 	void save(MongoObject mongoObject);
 	
-	List<T> listAll(Class<T> classFromObject, String collectionName);
+	void delete(MongoObject mongoObject);
+	
+	<T extends MongoObject> List<T > find(Class<T> classFromObject);
+	
+	<T extends MongoObject, V> T findOneBy(Class<T > classFromObject, String key, V value);
 }

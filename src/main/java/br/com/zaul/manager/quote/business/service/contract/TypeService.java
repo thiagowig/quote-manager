@@ -12,4 +12,6 @@ public interface TypeService {
 	List<Type> listTypes();
 	
 	void save(Type type);
+	
+	Type findByName(String name);
 }

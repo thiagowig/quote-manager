@@ -1,4 +1,6 @@
-package br.com.zaul.manager.quote.controller.type;
+package br.com.zaul.manager.quote.view.controller.quote;
+
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
@@ -6,19 +8,26 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
 
+import br.com.zaul.manager.quote.business.service.contract.QuoteService;
 import br.com.zaul.manager.quote.business.service.contract.TypeService;
+import br.com.zaul.manager.quote.business.service.entity.Quote;
 import br.com.zaul.manager.quote.business.service.entity.Type;
 import br.com.zaul.manager.quote.exception.DatabaseException;
 import br.com.zaul.manager.quote.exception.GenericApplicationException;
 
 @ManagedBean
-public class SaveTypeController {
+public class SaveQuoteController {
 
+	private Quote quote;
+	
 	private Type type;
 	
 	@EJB
-	private TypeService service;
-	
+	private QuoteService service;
+
+	@EJB
+	private TypeService typeService;
+
 	public void save(AjaxBehaviorEvent event) {
 		try {
 			this.doSave();
@@ -35,21 +44,34 @@ public class SaveTypeController {
 	}
 	
 	private void doSave() {
-		this.service.save(this.type);
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Tipo inserido com sucesso", null));
+		this.quote.setType(type.getName());
+		this.service.save(this.quote);
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Citação inserido com sucesso", null));
+	}
+	
+	public List<Type> getTypes() {
+		return this.typeService.listTypes();
 	}
 
-	public Type getType() {
-		if (type == null) {
-			type = new Type();
+	public Quote getQuote() {
+		if (quote == null) {
+			quote = new Quote();
 		}
 		
-		return type;
+		return quote;
+	}
+
+	public void setQuote(Quote quote) {
+		this.quote = quote;
 	}
 
 	public void setType(Type type) {
 		this.type = type;
 	}
-	
+
+	public Type getType() {
+		return type;
+	}
+
 	
 }

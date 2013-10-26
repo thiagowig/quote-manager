@@ -1,4 +1,4 @@
-package br.com.zaul.manager.quote.controller.type;
+package br.com.zaul.manager.quote.view.controller.type;
 
 
 import java.util.List;

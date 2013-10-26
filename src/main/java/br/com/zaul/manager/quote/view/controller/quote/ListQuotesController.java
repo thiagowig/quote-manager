@@ -1,4 +1,4 @@
-package br.com.zaul.manager.quote.controller.quote;
+package br.com.zaul.manager.quote.view.controller.quote;
 
 
 import java.util.List;
@@ -15,10 +15,6 @@ public class ListQuotesController {
 	@EJB
 	private QuoteService quoteService;
 	
-	public List<Quote> list() {
-		return quoteService.listAll();
-	}
-
 	public List<Quote> getQuotes() {
 		return quoteService.listAll();
 	}

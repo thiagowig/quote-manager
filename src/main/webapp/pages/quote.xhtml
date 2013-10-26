@@ -17,23 +17,25 @@
 		<ui:param name="pageName" value="quote" />
 		<ui:define name="content">
 			<h:form>
-				<h3>New Quote</h3>
-				<h:messages id="messages" infoClass="alert alert-success" warnClass="alert" errorClass="alert alert-error" />
-
-				<h:panelGrid columns="2">
-					<h:outputText value="Type:" />
-					<h:selectOneMenu value="#{saveQuoteController.quote.type}">
-						<f:selectItems value="#{saveQuoteController.types}" var="item" itemLabel="#{item.name}" />
-					</h:selectOneMenu>
-				
-					<h:outputText value="Quote:" />
-					<h:inputText value="#{saveQuoteController.quote.description}" styleClass="form-control" />
+				<fieldset>
+					<legend>New Type</legend>
+					<h:messages id="messages" infoClass="alert alert-success" warnClass="alert" errorClass="alert alert-error" />
+	
+					<h:panelGrid columns="2">
+						<h:outputText value="Type:" />
+						<h:selectOneMenu value="#{saveQuoteController.type}" converter="typeConverter" label="Type">
+							<f:selectItems value="#{saveQuoteController.types}" var="item" itemLabel="#{item.name}" />
+						</h:selectOneMenu>
 					
-					<h:commandButton value="Create Quote" class="btn btn-primary">
-						<f:ajax event="click" listener="#{saveQuoteController.save}" render="messages" execute="@form" />
-					</h:commandButton>
-					
-				</h:panelGrid>
+						<h:outputText value="Quote:" />
+						<h:inputTextarea rows="3" value="#{saveQuoteController.quote.description}" styleClass="form-control" label="Quote" />
+						
+						<h:commandButton value="Create Quote" class="btn btn-primary">
+							<f:ajax event="click" listener="#{saveQuoteController.save}" render="messages" execute="@form" />
+						</h:commandButton>
+						
+					</h:panelGrid>
+				</fieldset>
 			</h:form>
 		</ui:define>
 	</ui:composition>

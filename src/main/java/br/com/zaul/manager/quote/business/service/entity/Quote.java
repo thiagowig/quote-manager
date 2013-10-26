@@ -12,11 +12,7 @@ public class Quote implements MongoObject, Serializable {
 	 */
 	private static final long serialVersionUID = -4940432282177744433L;
 
-	public static final String COLLECTION_NAME = "quote";
-
 	private DBObject dbObject;
-	
-	private Type type;
 	
 	public Quote() {
 		this.dbObject = new BasicDBObject();
@@ -34,13 +30,12 @@ public class Quote implements MongoObject, Serializable {
 		this.getDbObject().put("description", description);
 	}
 	
-	public Type getType() {
-		return type;
+	public String getType() {
+		return (String) this.getDbObject().get("Type");
 	}
 
-	public void setType(Type type) {
-		this.type = type;
-		this.getDbObject().put(type.getCollectionName(), type.getDbObject());
+	public void setType(String type) {
+		this.getDbObject().put("Type", type);
 	}
 
 	@Override
@@ -51,11 +46,6 @@ public class Quote implements MongoObject, Serializable {
 	@Override
 	public void setDbObject(DBObject dBObject) {
 		this.dbObject = dBObject;
-	}
-
-	@Override
-	public String getCollectionName() {
-		return COLLECTION_NAME;
 	}
 
 }

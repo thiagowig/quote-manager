@@ -12,4 +12,6 @@ public interface QuoteService {
 	List<Quote> listAll();
 	
 	void save(Quote quote);
+	
+	void delete(Quote quote);
 }
