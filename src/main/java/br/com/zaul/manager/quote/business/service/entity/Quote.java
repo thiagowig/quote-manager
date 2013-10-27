@@ -1,6 +1,7 @@
 package br.com.zaul.manager.quote.business.service.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
@@ -19,7 +20,13 @@ public class Quote implements MongoObject, Serializable {
 	}
 	
 	public String getId() {
-		return this.dbObject.get("_id").toString();
+		Object id = this.dbObject.get("_id");
+		
+		if (id != null) {
+			return id.toString();
+		}
+		
+		return null;
 	}
 
 	public String getDescription() {
@@ -30,12 +37,28 @@ public class Quote implements MongoObject, Serializable {
 		this.getDbObject().put("description", description);
 	}
 	
+	public String getQuote() {
+		return (String) this.dbObject.get("quote");
+	}
+
+	public void setQuote(String quote) {
+		this.getDbObject().put("quote", quote);
+	}
+	
 	public String getType() {
 		return (String) this.getDbObject().get("Type");
 	}
 
 	public void setType(String type) {
 		this.getDbObject().put("Type", type);
+	}
+	
+	public Date getCreatedTime() {
+		return (Date) this.dbObject.get("createdTime");
+	}
+
+	public void setCreatedTime(Date createdTime) {
+		this.getDbObject().put("createdTime", createdTime);
 	}
 
 	@Override

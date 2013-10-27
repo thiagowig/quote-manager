@@ -34,11 +34,13 @@
           </button>
           <h:link value="Quote Manager" outcome="home" styleClass="brand" />
           <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li class="#{pageName eq 'home' ? 'active' : '' }"><h:link value="Home" outcome="home" /></li>
-              <li class="#{pageName eq 'type' ? 'active' : '' }"><h:link value="Type" outcome="type" /></li>
-              <li class="#{pageName eq 'quote' ? 'active' : '' }"><h:link value="Quote" outcome="quote" /></li>
-            </ul>
+            <h:form style="margin: 0 0 0px">
+	            <ul class="nav">
+	              <li class="#{pageName eq 'home' ? 'active' : '' }"><h:link value="Home" outcome="home" /></li>
+	              <li class="#{pageName eq 'type' ? 'active' : '' }"><h:commandLink value="Type" action="#{saveTypeController.newInstance}" /></li>
+	              <li class="#{pageName eq 'quote' ? 'active' : '' }"><h:commandLink value="Quote" action="#{saveQuoteController.newInstance}" /></li>
+	            </ul>
+            </h:form>
           </div><!--/.nav-collapse -->
         </div>
       </div>

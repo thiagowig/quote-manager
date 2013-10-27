@@ -15,70 +15,98 @@
 	<ui:composition template="/pages/template.xhtml">
 		<ui:param name="pageName" value="home" />
 		<ui:define name="content">
-			<h:form>
 				<h:messages id="messages" infoClass="alert alert-success" warnClass="alert" errorClass="alert alert-error" />
-				<h1>Types</h1>
+					
+					<h1>Types</h1>
 				
-				<h:dataTable styleClass="table table-striped" value="#{listTypesController.types}" var="item">
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="Name" />
-						</f:facet>
-						<h:outputText value="#{item.name}" />
-					</h:column>
-
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="Edit" />
-						</f:facet>
-						<h:commandButton value="Edit" class="btn btn-success">
-						</h:commandButton>
-					</h:column>
-					
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="Delete" />
-						</f:facet>
-						<h:commandButton value="Delete" class="btn btn-danger">
-						</h:commandButton>
-					</h:column>
-				</h:dataTable>
-
-				<h1>Quotes</h1>
-
-				<h:dataTable styleClass="table table-striped" value="#{listQuotesController.quotes}" var="item">
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="Type" />
-						</f:facet>
-						<h:outputText value="#{item.type}" />
-					</h:column>
-
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="Description" />
-						</f:facet>
-						<h:outputText value="#{item.description}" />
-					</h:column>
-					
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="Edit" />
-						</f:facet>
-						<h:commandButton value="Edit" class="btn btn-success">
-						</h:commandButton>
-					</h:column>
-					
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="Delete" />
-						</f:facet>
-						<h:commandButton value="Delete" class="btn btn-danger" action="#{deleteQuoteController.delete(item)}">
-						</h:commandButton>
-					</h:column>
-				</h:dataTable>
-
-			</h:form>
+					<h:dataTable styleClass="table table-striped" style="width: 70%" value="#{listTypesController.types}" var="item" >
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Name" />
+							</f:facet>
+							<h:outputText value="#{item.name}" />
+						</h:column>
+						
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Creation Time" />
+							</f:facet>
+							<h:outputText value="#{item.createdTime}">
+								<f:convertDateTime pattern="dd/MM/yyyy" />
+							</h:outputText>
+						</h:column>
+	
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Edit" />
+							</f:facet>
+							<h:form style="margin: 0 0 0px">
+								<h:commandButton value="Edit" class="btn btn-success" action="#{saveTypeController.updateType(item)}" />
+							</h:form>
+						</h:column>
+						
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Delete" />
+							</f:facet>
+							<h:form style="margin: 0 0 0px">
+								<h:commandButton value="Delete" class="btn btn-danger" action="#{deleteTypeController.delete(item)}" onclick="return confirm('Are you sure?')" />
+							</h:form>
+						</h:column>
+					</h:dataTable>
+				
+				
+					<h1>Quotes</h1>
+	
+					<h:dataTable styleClass="table table-striped" value="#{listQuotesController.quotes}" var="item">
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Type" />
+							</f:facet>
+							<h:outputText value="#{item.type}" />
+						</h:column>
+	
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Description" />
+							</f:facet>
+							<h:outputText value="#{item.description}" />
+						</h:column>
+						
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Quote" />
+							</f:facet>
+							<h:outputText value="#{item.quote}" />
+						</h:column>
+						
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Creation Time" />
+							</f:facet>
+							<h:outputText value="#{item.createdTime}">
+								<f:convertDateTime pattern="dd/MM/yyyy" />
+							</h:outputText>
+						</h:column>
+						
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Edit" />
+							</f:facet>
+							<h:form style="margin: 0 0 0px">
+								<h:commandButton value="Edit" class="btn btn-success" action="#{saveQuoteController.updateQuote(item)}" />
+							</h:form>
+						</h:column>
+						
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Delete" />
+							</f:facet>
+							<h:form style="margin: 0 0 0px">
+								<h:commandButton value="Delete" class="btn btn-danger" action="#{deleteQuoteController.delete(item)}" onclick="return confirm('Are you sure?')" />
+							</h:form>
+						</h:column>
+					</h:dataTable>
 		</ui:define>
 	</ui:composition>
 

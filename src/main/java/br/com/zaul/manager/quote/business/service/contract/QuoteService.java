@@ -14,4 +14,5 @@ public interface QuoteService {
 	void save(Quote quote);
 	
 	void delete(Quote quote);
+	
 }

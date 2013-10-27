@@ -1,24 +1,24 @@
-package br.com.zaul.manager.quote.view.controller.quote;
+package br.com.zaul.manager.quote.view.controller.type;
 
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
-import br.com.zaul.manager.quote.business.service.contract.QuoteService;
-import br.com.zaul.manager.quote.business.service.entity.Quote;
+import br.com.zaul.manager.quote.business.service.contract.TypeService;
+import br.com.zaul.manager.quote.business.service.entity.Type;
 import br.com.zaul.manager.quote.exception.DatabaseException;
 import br.com.zaul.manager.quote.exception.GenericApplicationException;
 
 @ManagedBean
-public class DeleteQuoteController {
+public class DeleteTypeController {
 
 	@EJB
-	private QuoteService service;
+	private TypeService service;
 
-	public void delete(Quote quote) {
+	public void delete(Type type) {
 		try {
-			this.doDelete(quote);
+			this.doDelete(type);
 			
 		} catch (DatabaseException e) {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro no banco de dados", null));
@@ -31,9 +31,9 @@ public class DeleteQuoteController {
 		}
 	}
 	
-	private void doDelete(Quote quote) {
-		this.service.delete(quote);
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Citação deletada com sucesso", null));
+	private void doDelete(Type type) {
+		this.service.delete(type);
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Tipo deletado com sucesso", null));
 	}
 	
 }

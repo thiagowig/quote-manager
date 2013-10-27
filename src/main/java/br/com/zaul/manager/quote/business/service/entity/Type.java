@@ -1,6 +1,7 @@
 package br.com.zaul.manager.quote.business.service.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
@@ -19,7 +20,13 @@ public class Type implements MongoObject, Serializable {
 	}
 	
 	public String getId() {
-		return this.dbObject.get("_id").toString();
+		Object id = this.dbObject.get("_id");
+		
+		if (id != null) {
+			return id.toString();
+		}
+		
+		return null;
 	}
 
 	public String getName() {
@@ -28,6 +35,14 @@ public class Type implements MongoObject, Serializable {
 
 	public void setName(String name) {
 		this.getDbObject().put("name", name);
+	}
+	
+	public Date getCreatedTime() {
+		return (Date) this.dbObject.get("createdTime");
+	}
+
+	public void setCreatedTime(Date createdTime) {
+		this.getDbObject().put("createdTime", createdTime);
 	}
 
 	@Override

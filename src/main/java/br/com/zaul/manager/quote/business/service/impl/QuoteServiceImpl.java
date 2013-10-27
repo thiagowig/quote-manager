@@ -7,6 +7,7 @@ import javax.inject.Inject;
 
 import br.com.zaul.manager.quote.business.service.contract.QuoteService;
 import br.com.zaul.manager.quote.business.service.entity.Quote;
+import br.com.zaul.manager.quote.business.service.entity.SortType;
 import br.com.zaul.manager.quote.business.storage.contract.DataAccess;
 
 @Stateless
@@ -17,7 +18,7 @@ public class QuoteServiceImpl implements QuoteService {
 	
 	@Override
 	public List<Quote> listAll() {
-		return this.dataAccess.find(Quote.class);
+		return this.dataAccess.find(Quote.class, "createdTime", SortType.DESC);
 	}
 
 	@Override
@@ -29,6 +30,5 @@ public class QuoteServiceImpl implements QuoteService {
 	public void delete(Quote quote) {
 		dataAccess.delete(quote);
 	}
-
 	
 }

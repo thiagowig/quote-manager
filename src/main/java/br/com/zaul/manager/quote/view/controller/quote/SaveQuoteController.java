@@ -5,17 +5,20 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
 
 import br.com.zaul.manager.quote.business.service.contract.QuoteService;
 import br.com.zaul.manager.quote.business.service.contract.TypeService;
 import br.com.zaul.manager.quote.business.service.entity.Quote;
+import br.com.zaul.manager.quote.business.service.entity.SortType;
 import br.com.zaul.manager.quote.business.service.entity.Type;
 import br.com.zaul.manager.quote.exception.DatabaseException;
 import br.com.zaul.manager.quote.exception.GenericApplicationException;
 
 @ManagedBean
+@SessionScoped
 public class SaveQuoteController {
 
 	private Quote quote;
@@ -49,8 +52,19 @@ public class SaveQuoteController {
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Citação inserido com sucesso", null));
 	}
 	
+	public String newInstance() {
+		quote = new Quote();
+		return "quote";
+	}
+	
+	public String updateQuote(Quote quote) {
+		this.quote = quote;
+		this.type = this.typeService.findByName(quote.getType());
+		return "quote";
+	}
+	
 	public List<Type> getTypes() {
-		return this.typeService.listTypes();
+		return this.typeService.listAllOrdered("name", SortType.ASC);
 	}
 
 	public Quote getQuote() {

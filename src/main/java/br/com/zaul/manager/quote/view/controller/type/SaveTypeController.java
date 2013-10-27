@@ -3,6 +3,7 @@ package br.com.zaul.manager.quote.view.controller.type;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
 
@@ -12,6 +13,7 @@ import br.com.zaul.manager.quote.exception.DatabaseException;
 import br.com.zaul.manager.quote.exception.GenericApplicationException;
 
 @ManagedBean
+@SessionScoped
 public class SaveTypeController {
 
 	private Type type;
@@ -37,6 +39,16 @@ public class SaveTypeController {
 	private void doSave() {
 		this.service.save(this.type);
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Tipo inserido com sucesso", null));
+	}
+	
+	public String newInstance() {
+		this.type = new Type();
+		return "type";
+	}
+	
+	public String updateType(Type type) {
+		this.type = type;
+		return "type";
 	}
 
 	public Type getType() {

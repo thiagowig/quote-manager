@@ -27,10 +27,13 @@
 							<f:selectItems value="#{saveQuoteController.types}" var="item" itemLabel="#{item.name}" />
 						</h:selectOneMenu>
 					
-						<h:outputText value="Quote:" />
-						<h:inputTextarea rows="3" value="#{saveQuoteController.quote.description}" styleClass="form-control" label="Quote" />
+						<h:outputText value="Description:" />
+						<h:inputText rows="3" value="#{saveQuoteController.quote.description}" styleClass="form-control" label="Description" />
 						
-						<h:commandButton value="Create Quote" class="btn btn-primary">
+						<h:outputText value="Quote:" />
+						<h:inputTextarea rows="3" value="#{saveQuoteController.quote.quote}" styleClass="form-control" label="Quote" />
+						
+						<h:commandButton value="Create" class="btn btn-primary">
 							<f:ajax event="click" listener="#{saveQuoteController.save}" render="messages" execute="@form" />
 						</h:commandButton>
 						
