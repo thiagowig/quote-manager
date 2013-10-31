@@ -16,6 +16,7 @@ import br.com.zaul.manager.quote.business.service.entity.Type;
 @FacesConverter(value="typeConverter", forClass=Type.class)
 public class TypeConverter implements Converter {
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component, String value) {
 		List<UIComponent> l = component.getChildren();
