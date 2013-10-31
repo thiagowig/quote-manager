@@ -1,6 +1,5 @@
 package br.com.zaul.manager.quote.business.storage.impl;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -12,6 +11,7 @@ import org.slf4j.Logger;
 import br.com.zaul.manager.quote.business.service.entity.MongoObject;
 import br.com.zaul.manager.quote.business.service.entity.SortType;
 import br.com.zaul.manager.quote.business.storage.contract.DataAccess;
+import br.com.zaul.manager.quote.business.storage.converter.EntityConverter;
 import br.com.zaul.manager.quote.exception.DatabaseException;
 import br.com.zaul.manager.quote.exception.GenericApplicationException;
 
@@ -32,6 +32,8 @@ public class MongoDAO implements DataAccess {
 	private DB db;
 	@Inject
 	private static Logger LOGGER;
+	@Inject
+	private EntityConverter entityConverter;
 	
 	/**
 	 * 
@@ -73,32 +75,25 @@ public class MongoDAO implements DataAccess {
 	public <T extends MongoObject> List<T> find(Class<T> classFromObject, String sortColumn, SortType sortType) {
 		try (DBCursor cursor = this.db.getCollection(classFromObject.getSimpleName()).find()) {
 			
-			if (sortColumn != null) {
-				cursor.sort(new BasicDBObject(sortColumn, sortType.getValue()));
-			}
-			
-			return this.generateListFromCursor(classFromObject, cursor);
-			
+			this.sortCursor(sortColumn, sortType, cursor);
+			return entityConverter.convertCursorInList(classFromObject, cursor);
 			
 		} catch(Exception e) {
 			LOGGER.error("Erro ao recuperar a lista do tipo: " + classFromObject.getSimpleName(), e);
 			throw new DatabaseException();
 		}
 	}
-	
-	/*
+
+	/**
 	 * 
+	 * @param sortColumn
+	 * @param sortType
+	 * @param cursor
 	 */
-	private <T extends MongoObject> List<T> generateListFromCursor(Class<T> classFromObject, DBCursor cursor) throws InstantiationException, IllegalAccessException {
-		List<T> list = new ArrayList<T>();
-		
-		while(cursor.hasNext()) {
-			T object = classFromObject.newInstance();
-			object.setDbObject(cursor.next());
-			list.add(object);
+	private void sortCursor(String sortColumn, SortType sortType, DBCursor cursor) {
+		if (sortColumn != null) {
+			cursor.sort(new BasicDBObject(sortColumn, sortType.getValue()));
 		}
-		
-		return list;
 	}
 	
 	/**
@@ -145,11 +140,7 @@ public class MongoDAO implements DataAccess {
 			DBCollection collection = this.db.getCollection(classFromObject.getSimpleName());
 			DBCursor cursor = collection.find(new BasicDBObject(key, value));
 			
-			return generateListFromCursor(classFromObject, cursor);
-			
-		} catch (IllegalAccessException | InstantiationException e) {
-			LOGGER.error("Erro ao instanciar o objeto: " + classFromObject.getSimpleName(), e);
-			throw new GenericApplicationException(":( ERRO");
+			return entityConverter.convertCursorInList(classFromObject, cursor);
 			
 		} catch (Exception e) {
 			LOGGER.error("Erro na busca por um elemento", e);

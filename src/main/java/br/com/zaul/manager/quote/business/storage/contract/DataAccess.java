@@ -11,9 +11,9 @@ public interface DataAccess {
 	
 	void delete(MongoObject mongoObject);
 	
-	<T extends MongoObject> List<T > find(Class<T> classFromObject);
+	<T extends MongoObject> List<T> find(Class<T> classFromObject);
 	
-	<T extends MongoObject> List<T > find(Class<T> classFromObject, String sortColumn, SortType sortType);
+	<T extends MongoObject> List<T> find(Class<T> classFromObject, String sortColumn, SortType sortType);
 	
 	<T extends MongoObject, V> T findOneBy(Class<T > classFromObject, String key, V value);
 	

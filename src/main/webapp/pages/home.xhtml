@@ -20,42 +20,50 @@
 					
 					<h1>Types</h1>
 				
-					<h:dataTable styleClass="table table-striped" style="width: 70%" value="#{listTypesController.types}" var="item" >
-						<h:column>
-							<f:facet name="header">
-								<h:outputText value="Name" />
-							</f:facet>
-							<h:outputText value="#{item.name}" />
-						</h:column>
-						
-						<h:column>
-							<f:facet name="header">
-								<h:outputText value="Creation Time" />
-							</f:facet>
-							<h:outputText value="#{item.createdTime}">
-								<f:convertDateTime pattern="dd/MM/yyyy" />
-							</h:outputText>
-						</h:column>
-	
-						<h:column>
-							<f:facet name="header">
-								<h:outputText value="Edit" />
-							</f:facet>
-							<h:form style="margin: 0 0 0px">
-								<h:commandButton value="Edit" class="btn btn-success" action="#{saveTypeController.updateType(item)}" />
-							</h:form>
-						</h:column>
-						
-						<h:column>
-							<f:facet name="header">
-								<h:outputText value="Delete" />
-							</f:facet>
-							<h:form style="margin: 0 0 0px">
-								<h:commandButton value="Delete" class="btn btn-danger" action="#{deleteTypeController.delete(item)}" onclick="return confirm('Are you sure?')" />
-							</h:form>
-						</h:column>
-					</h:dataTable>
-				
+					<div style="float: left;">
+						<h:dataTable styleClass="table table-striped" style="width: 55%" value="#{listTypesController.types}" var="item" >
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="Name" />
+								</f:facet>
+								<h:outputText value="#{item.name}" />
+							</h:column>
+							
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="Creation Time" />
+								</f:facet>
+								<h:outputText value="#{item.createdTime}">
+									<f:convertDateTime pattern="dd/MM/yyyy" />
+								</h:outputText>
+							</h:column>
+		
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="Edit" />
+								</f:facet>
+								<h:form style="margin: 0 0 0px">
+									<h:commandButton value="Edit" class="btn btn-success" action="#{saveTypeController.updateType(item)}" />
+								</h:form>
+							</h:column>
+							
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="Delete" />
+								</f:facet>
+								<h:form style="margin: 0 0 0px">
+									<h:commandButton value="Delete" class="btn btn-danger" action="#{deleteTypeController.delete(item)}" onclick="return confirm('Are you sure?')" />
+								</h:form>
+							</h:column>
+						</h:dataTable>
+					</div>
+					
+					<div style="float: right;">
+                <p:pieChart id="custom" value="#{listTypesController.pieModel}" legendPosition="e" fill="false" showDataLabels="true"
+                title="Custom Options" style="width:400px;height:300px" sliceMargin="5" diameter="150" />
+					</div>
+					
+					<div style="clear: both;">
 				
 					<h1>Quotes</h1>
 	
@@ -110,6 +118,8 @@
 							</h:form>
 						</h:column>
 					</h:dataTable>
+					
+					</div>
 		</ui:define>
 	</ui:composition>
 

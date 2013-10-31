@@ -105,9 +105,6 @@ public class URLParserTest {
 		Assert.assertEquals(parsedNote, urlParser.parse(note));
 	}
 	
-	
-	
-	
 	@Test
 	public void testURLWithHttpAndBR() {
 		String note = "http://zaul.com.br";

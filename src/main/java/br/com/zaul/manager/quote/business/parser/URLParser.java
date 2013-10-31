@@ -9,7 +9,6 @@ public class URLParser implements Parser {
 	
 	private static final String LINK_PATTERN = "<a target=\"blank\" href=\"http://%s\">%s</a>";
 	
-	
 	@Override
 	public String parse(String value) {
 		Pattern pattern = Pattern.compile(URL_REGEX);

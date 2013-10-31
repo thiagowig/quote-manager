@@ -1,40 +1,39 @@
 package br.com.zaul.manager.quote.business.storage.converter;
 
-import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
 
-import br.com.zaul.manager.quote.exception.DatabaseException;
+import br.com.zaul.manager.quote.business.service.entity.MongoObject;
+import br.com.zaul.manager.quote.exception.GenericApplicationException;
 
-import com.mongodb.DBObject;
+import com.mongodb.DBCursor;
 
-public class MongoEntityConverter<T> {
-	
-	private Class<T> entityClass; 
-	
-	public MongoEntityConverter(Class<T> entityClass) {
-		this.entityClass = entityClass;
-	}
+/**
+ * 
+ * @author thiago
+ *
+ */
+public class MongoEntityConverter implements EntityConverter {
 
-	public T convertDBObjectInTypeObject(DBObject dbObject) {
-		T newType;
-		
+	/**
+	 * 
+	 */
+	@Override
+	public <T extends MongoObject> List<T> convertCursorInList(Class<T> classFromObject, DBCursor cursor) {
 		try {
-			newType = (T) entityClass.newInstance();
-			Method[] declaredMethods = entityClass.getDeclaredMethods();
+			List<T> list = new ArrayList<T>();
 			
-			for (Method method : declaredMethods) {
-				//Persistent persistent = method.getAnnotation(Persistent.class);
-				
-				//if (persistent != null) {
-				//	method.invoke(newType, dbObject.get(persistent.name()));
-				//}
+			while(cursor.hasNext()) {
+				T object = classFromObject.newInstance();
+				object.setDbObject(cursor.next());
+				list.add(object);
 			}
 			
-			return newType;
+			return list;
 			
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new DatabaseException();
+		}catch (Exception e) {
+			throw new GenericApplicationException("");
 		}
-		
 	}
+	
 }
