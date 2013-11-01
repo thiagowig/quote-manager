@@ -13,6 +13,14 @@
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
 		<h:outputStylesheet name="bootstrap.css" library="css" />
+		
+		<script type="text/javascript">
+		// Prevent closing the sign in form on click
+		j$(‘#dropdown-login’).click(function(e) {
+		   e.stopPropagation();
+		);
+		</script>
+		
 		<style>
 	      body {
         padding-top: 60px;
@@ -59,14 +67,24 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <h:link value="Quote Manager" outcome="home" styleClass="brand" />
+          <h:link value="Quote Manager" outcome="dashboard" styleClass="brand" />
           <div class="nav-collapse collapse">
             <h:form style="margin: 0 0 0px">
 	            <ul class="nav">
-	              <li class="#{pageName eq 'home' ? 'active' : '' }"><h:link value="Home" outcome="home" /></li>
+	              <li class="#{pageName eq 'dashboard' ? 'active' : '' }"><h:link value="Dashboard" outcome="dashboard" /></li>
 	              <li class="#{pageName eq 'type' ? 'active' : '' }"><h:commandLink value="Type" action="#{saveTypeController.newInstance}" /></li>
 	              <li class="#{pageName eq 'quote' ? 'active' : '' }"><h:commandLink value="Quote" action="#{saveQuoteController.newInstance}" /></li>
 	            </ul>
+	            <ul class="nav pull-right">
+		          <li class="dropdown" id="menuLogin">
+		            <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login</a>
+		            <div class="dropdown-menu" style="padding:17px;">
+		                <input name="username" id="username" type="text" placeholder="Username"/> 
+		                <input name="password" id="password" type="password" placeholder="Password"/><br/>
+		                <button type="button" id="btnLogin" class="btn btn-primary">Login</button>
+		            </div>
+		          </li>
+		        </ul>
             </h:form>
           </div><!--/.nav-collapse -->
         </div>
@@ -80,7 +98,7 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <h:outputScript library="js" name="jquery.js" />
+    <h:outputScript library="primefaces" name="jquery/jquery.js" />
     <h:outputScript library="js" name="bootstrap-transition.js" />
     <h:outputScript library="js" name="bootstrap-alert.js" />
     <h:outputScript library="js" name="bootstrap-modal.js" />

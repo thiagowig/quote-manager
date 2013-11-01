@@ -38,7 +38,7 @@ public class ListTypesController {
         pieModel = new PieChartModel();
 
         pieModel.set("Brand 1", 540);
-        pieModel.set("Brand 2", 325);
+        pieModel.set("Brand 2", 0);
         pieModel.set("Brand 3", 702);
         pieModel.set("Brand 4", 421);
     }

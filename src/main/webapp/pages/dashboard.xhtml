@@ -14,14 +14,13 @@
 <h:body>
 
 	<ui:composition template="/pages/template.xhtml">
-		<ui:param name="pageName" value="home" />
+		<ui:param name="pageName" value="dashboard" />
 		<ui:define name="content">
 					<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />  
-					
-					<h1>Types</h1>
 				
-					<div style="float: left;">
-						<h:dataTable styleClass="table table-striped" style="width: 55%" value="#{listTypesController.types}" var="item" >
+					<div style="float: left;width: 60%">
+					<h1>Types</h1>
+						<h:dataTable styleClass="table table-striped" value="#{listTypesController.types}" var="item" >
 							<h:column>
 								<f:facet name="header">
 									<h:outputText value="Name" />
@@ -59,8 +58,9 @@
 					</div>
 					
 					<div style="float: right;">
-                <p:pieChart id="custom" value="#{listTypesController.pieModel}" legendPosition="e" fill="false" showDataLabels="true"
-                title="Custom Options" style="width:400px;height:300px" sliceMargin="5" diameter="150" />
+						<h1>Chart</h1>
+                <p:pieChart value="#{listTypesController.pieModel}" legendPosition="e" showDataLabels="true" 
+               style="width:400px;height:300px; background:#f5f5f5" seriesColors="51a351,bd362f,0044cc,f89406,e6e6e6,5bc0de,3ea909,ff7f00,87b169,0669de,297acc,589219,be264d" fill="false" sliceMargin="5" />
 					</div>
 					
 					<div style="clear: both;">
