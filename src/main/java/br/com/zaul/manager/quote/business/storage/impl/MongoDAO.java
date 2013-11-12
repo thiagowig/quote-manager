@@ -147,4 +147,12 @@ public class MongoDAO implements DataAccess {
 			throw new DatabaseException(":( ERRO");
 		}
 	}
+
+	@Override
+	public <T extends MongoObject, V> Integer countBy(Class<T> classFromObject, String key, V value) {
+		DBCollection collection = this.db.getCollection(classFromObject.getSimpleName());
+		DBCursor cursor = collection.find(new BasicDBObject(key, value));
+		
+		return cursor.count();
+	}
 }

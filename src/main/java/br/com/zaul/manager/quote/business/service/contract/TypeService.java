@@ -6,6 +6,7 @@ import javax.ejb.Local;
 
 import br.com.zaul.manager.quote.business.service.entity.SortType;
 import br.com.zaul.manager.quote.business.service.entity.Type;
+import br.com.zaul.manager.quote.business.service.entity.TypesChart;
 
 @Local
 public interface TypeService {
@@ -19,4 +20,6 @@ public interface TypeService {
 	void delete(Type type);
 	
 	Type findByName(String name);
+	
+	List<TypesChart> listTypeChart();
 }

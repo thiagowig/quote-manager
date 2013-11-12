@@ -12,6 +12,7 @@ import org.primefaces.model.chart.PieChartModel;
 import br.com.zaul.manager.quote.business.service.contract.TypeService;
 import br.com.zaul.manager.quote.business.service.entity.SortType;
 import br.com.zaul.manager.quote.business.service.entity.Type;
+import br.com.zaul.manager.quote.business.service.entity.TypesChart;
 
 @ManagedBean
 @SessionScoped
@@ -26,21 +27,16 @@ public class ListTypesController {
 
 	private PieChartModel pieModel;
 
-	public ListTypesController() {
-        createPieModel();
-	}
-
     public PieChartModel getPieModel() {
+    	pieModel = new PieChartModel();
+
+        List<TypesChart> typesCharts = typeService.listTypeChart();
+        
+        for (TypesChart typesChart : typesCharts) {
+        	pieModel.set(typesChart.getTypeName(), typesChart.getQuotesAmount());
+		}
+    	
         return pieModel;
     }
 
-    private void createPieModel() {
-        pieModel = new PieChartModel();
-
-        pieModel.set("Brand 1", 540);
-        pieModel.set("Brand 2", 0);
-        pieModel.set("Brand 3", 702);
-        pieModel.set("Brand 4", 421);
-    }
-	
 }

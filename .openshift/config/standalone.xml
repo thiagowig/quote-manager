@@ -456,6 +456,13 @@
         <subsystem xmlns="urn:jboss:domain:sar:1.0"/>
         <subsystem xmlns="urn:jboss:domain:security:1.1">
             <security-domains>
+            
+            	<security-domain name="form-auth" cache-type="default">
+            		 <authentication>
+                        <login-module code=" br.com.zaul.manager.quote.security.ApplicationLoginModule" flag="required"/>
+                    </authentication>
+            	</security-domain>
+            	
                 <security-domain name="other" cache-type="default">
                     <authentication>
                         <login-module code="UsersRoles" flag="required"/>

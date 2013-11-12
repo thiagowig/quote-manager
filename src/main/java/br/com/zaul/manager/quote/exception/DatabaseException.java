@@ -1,6 +1,6 @@
 package br.com.zaul.manager.quote.exception;
 
-public class DatabaseException extends RuntimeException {
+public class DatabaseException extends RuntimeException implements ApplicationException {
 
 	/**
 	 * 

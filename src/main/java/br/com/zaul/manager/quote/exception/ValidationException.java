@@ -1,6 +1,6 @@
 package br.com.zaul.manager.quote.exception;
 
-public class ValidationException extends RuntimeException {
+public class ValidationException extends RuntimeException implements ApplicationException {
 
 	/**
 	 * 

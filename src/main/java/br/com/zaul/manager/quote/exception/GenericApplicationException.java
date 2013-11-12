@@ -1,6 +1,6 @@
 package br.com.zaul.manager.quote.exception;
 
-public class GenericApplicationException extends RuntimeException {
+public class GenericApplicationException extends RuntimeException implements ApplicationException {
 
 	/**
 	 * 

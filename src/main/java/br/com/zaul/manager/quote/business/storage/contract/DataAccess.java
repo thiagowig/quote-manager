@@ -15,7 +15,10 @@ public interface DataAccess {
 	
 	<T extends MongoObject> List<T> find(Class<T> classFromObject, String sortColumn, SortType sortType);
 	
-	<T extends MongoObject, V> T findOneBy(Class<T > classFromObject, String key, V value);
+	<T extends MongoObject, V> T findOneBy(Class<T> classFromObject, String key, V value);
 	
-	<T extends MongoObject, V> List<T> findBy(Class<T > classFromObject, String key, V value);
+	<T extends MongoObject, V> List<T> findBy(Class<T> classFromObject, String key, V value);
+	
+	<T extends MongoObject, V> Integer countBy(Class<T> classFromObject, String key, V value);
+	
 }
